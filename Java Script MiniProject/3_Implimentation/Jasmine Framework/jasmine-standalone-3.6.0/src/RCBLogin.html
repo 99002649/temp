@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>RCB Login Page</title>
+    <script src="../src/RCBTest.js"></script>
+   <style>
+       body{
+           /* background-color: rgb(73, 71, 71); */
+           background-color: rgb(182, 179, 179);
+       }
+       header{
+            background-color:red;
+            text-align: center;
+            border:2px solid black ;
+            padding: 1px;
+            border-radius: 10px; 
+            color:yellow;
+            margin-left: 80px;
+            margin-right: 80px;
+        }
+        #image1
+        {
+                position: absolute;
+                right:120px;
+                top:15px;
+        }
+        #image2
+        {
+                position: absolute;
+                left:120px;
+                top:17px;
+        }
+       form h1{
+           text-align: center;
+           text-decoration: underline;
+       }
+       form{
+           width: 400px;
+           padding : 15px;
+           border : 2px solid black;
+           margin: 50px auto 0;
+           border-radius: 10px;
+           background-color:lightgoldenrodyellow;
+        }
+        label{
+            display: block;
+            margin-bottom: 5px;
+            margin-top: 15px;
+            font-size: large;
+            font-weight: bold;
+        }
+        input{
+            border-radius: 5px;
+            padding: 8px;
+            border:1px solid black;
+            display: block;
+            width: 95%;
+            margin-bottom: 5px;
+            font-size: medium;
+        }
+        .error
+        {
+            font-size: 0.8em;
+            font-weight:700;
+            color:indianred;
+        }
+        
+   </style>
+   <script>
+      function ShowError(id,msg)
+       {
+          document.getElementById(id).innerText = msg;
+       }       
+       function Validate()
+       {
+           let name1 = document.regForm.name.value;
+           let password1 = document.regForm.password.value;
+           if(name1 == "" || name1 == null){
+                ShowError("errName", "Name is mandatory!!!")
+                return false;
+            }else{
+                ShowError("errName", "")
+            }
+            if(nameTest(name1) == false){
+                ShowError("errName", "name is not in a valid format!!!")
+                return false;
+            } else {
+                ShowError("errName", "")
+            }
+          
+           if(password1 == "" || password1 == null)
+           {
+               ShowError("errPassword","Enter the Password");
+               return false;
+           }
+           else
+           {
+                ShowError("errPassword","")
+           }
+           return true;
+       }
+   </script>
+</head>
+<body>
+    <header>
+        <h1>Royal Challengers Bengalore #PlayBold</h1>
+          <h2> 🏆ಈ ಸಲ ಕಪ್ ನಮ್ದೇ💪</h2>
+     
+        <img id="image1" src="../Assets/RCBLogo.png" width="120px" height="120px">
+        <img id="image2" src="../Assets/playbold.jpg" width="160px" height="120px">
+       </header>
+    
+    <form action="file:../Views/RCBTicketBooking.html"  name="regForm"  onsubmit="return Validate()">
+        <h1>Login Into Your Account</h1>
+    <div>
+        <label for="name">User Name</label>
+        <input type="text" id="name" name="name">
+        <div id="errName" class="error"></div>
+    </div>
+    <div>
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password">
+        <div id="errPassword" class="error"></div>
+    </div>
+    
+        <input type="submit" value="SIGN IN" id="button" style="width: 80pt; margin-left: 100pt; margin-top: 20px; border-radius: 10px;">
+        
+        <div>
+            <label > <a href="../Views/RCBSignUp.html" style="color: red">Create Your Account</a></label >
+        </div>
+    </form>
+</body>
+</html>
