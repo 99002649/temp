@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Book Your Ticket</title>
+    <script src="../src/RCBTest.js"></script>
+   <style>
+       body{
+           background-color: rgb(182, 179, 179);
+       }
+       header{
+            background-color:red;
+            text-align: center;
+            border:2px solid black ;
+            padding: 1px;
+            border-radius: 10px;
+            color:yellow;
+            margin-left: 80px;
+            margin-right: 80px;
+        }
+        #image1
+        {
+                position: absolute;
+                right:120px;
+                top:15px;
+        }
+        #image2
+        {
+                position: absolute;
+                left:120px;
+                top:17px;
+        }
+       form h1{
+           text-align: center;
+           text-decoration: underline;
+       }
+       form{
+           width: 400px;
+           padding : 15px;
+           border : 2px solid black;
+           margin: 50px auto 0;
+           border-radius: 10px;
+           background-color:lightgoldenrodyellow;
+        }
+        label{
+            display: block;
+            margin-bottom: 5px;
+            margin-top: 15px;
+            font-size: large;
+            font-weight: bold;
+        }
+        input{
+            border-radius: 5px;
+            padding: 8px;
+            border:1px solid black;
+            display: block;
+            width: 95%;
+            margin-bottom: 5px;
+            font-size: medium;
+        }
+        .error
+        {
+            font-size: 0.8em;
+            font-weight:700;
+            color:indianred;
+        }
+        
+   </style>
+   <script>
+       function ShowError(id,msg)
+       {
+          document.getElementById(id).innerText = msg;
+       }
+
+       function Validate()
+       {
+           let name1 = document.regForm.name.value;
+           let email1 = document.regForm.email.value;
+           let phone1 = document.regForm.phone.value;
+           let date1 = document.regForm.date.value;
+           let ticket1 = document.regForm.numofticket.value;
+           let price1 = document.regForm.pricerange.value;
+           
+           if(name1=="" || name1== null)
+           {
+               ShowError("errName","Enter the Name");
+               return false;
+           }
+           else
+           {
+                ShowError("errName","")
+           }
+                if(nameTest(name1)==false)
+                    {
+                        ShowError("errName","Email ID Is Not Valid");
+                        return false;
+                    }
+                    else
+                    {
+                        ShowError("errName","")
+                    }
+           if(email1 == "" ||email1== null)
+           {
+               ShowError("errEmail","Enter the Email ID");
+               return false;
+           }
+           else
+           {
+                ShowError("errEmail","")
+           }
+                    if(emailTest(email1)==false)
+                    {
+                        ShowError("errEmail","Email ID Is Not Valid");
+                        return false;
+                    }
+                    else
+                    {
+                        ShowError("errEmail","")
+                    }
+           if(phone1 == "" ||phone1== null)
+           {
+               ShowError("errPhone","Enter Mobile Number");
+               return false;
+           }
+           else
+           {
+                ShowError("errPhone","")
+           }
+          
+                    if(phoneNumberTest(phone1)==false)
+                    {
+                        ShowError("errPhone","Mobile Number Is Not Valid");
+                        return false;
+                    }
+                    else
+                    {
+                        ShowError("errPhone","")
+                    }
+           if(date1 == "" ||date1== null)
+           {
+               ShowError("errDate","Select the Date");
+               return false;
+           }
+           else
+           {
+                ShowError("errDate","")
+           }
+           
+           if(ticket1 == "" || ticket1== null)
+           {
+               ShowError("errNumofticket","Select the number of tickets");
+               return false;
+           }
+           else
+           {
+                ShowError("errNumofticket","")
+           }
+                     if(ticketTest(ticket1)==false)
+                    {
+                        ShowError("errNumofticket","number of tickets limited to 500");
+                        return false;
+                    }
+                    else
+                    {
+                        ShowError("errNumofticket","")
+                    }
+           if(ticket1 <=0)
+            {
+                ShowError("errNumofticket","Select Valid Number of Ticket");
+                return false;
+            }
+            else
+            {
+                 ShowError("errNumofticket","")
+            }
+           if(price1 == 5000)
+           {
+               ShowError("errPrice","Select the Price");
+               return false;
+           }
+           else
+           {
+                ShowError("errPrice","")
+           }
+               let Total= ticket1 * price1;
+               alert(ticket1 +" Ticket Booking is Conformed" + "\n" +"TOTAL PRICE = "+Total);
+           return true;
+       }
+      
+   </script>
+</head>
+<body>
+    <header>
+        <h1>Royal Challengers Bengalore #PlayBold</h1>
+          <h2> 🏆ಈ ಸಲ ಕಪ್ ನಮ್ದೇ💪</h2>
+     
+        <img id="image1" src="../Assets/RCBLogo.png" width="120px" height="120px">
+        <img id="image2" src="../Assets/playbold.jpg" width="160px" height="120px">
+       </header>
+    
+    <form action="" name="regForm" onsubmit="return Validate()">
+        <h1>Book Ticket</h1>
+    <div>
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name">
+        <div id="errName" class="error"></div>
+    </div>
+    <div>
+        <label for="email">Email ID</label>
+        <input type="text" id="email" name="email">
+        <div id="errEmail" class="error"></div>
+    </div>
+    <div>
+        <label for="phone">Mobile Number</label>
+        <input type="text" id="phone" name="phone">
+        <div id="errPhone" class="error"></div>
+    </div>
+    <div>
+        <label for="date">Date</label>
+        <input type="date" id="date" name="date">
+        <div id="errDate" class="error"></div>
+    </div>
+    <div>
+        <label for="numofticket">Total No Of Seats</label>
+        <input type="number" id="numofticket" name="numofticket">
+        <div id="errNumofticket" class="error"></div>
+    </div>
+    <div>
+        <label for="pricerange">Select Price</label>
+        <input type="range"  min="1000" max="8000" step="1000" value="2000" oninput="SetPrice()" id="pricerange" name="pricerange" >
+        <div id="errPrice" class="error"></div>
+        <p>One Ticket Price: <span id="Pricerange"></span> </p>
+    </div>
+        <input type="submit" value="BOOK NOW" id="button" style="width: 100pt; margin-left: 100pt; margin-top: 20px; border-radius: 10px;">
+    </form>
+
+    <script>
+        function SetPrice()
+        {   
+            document.getElementById("Pricerange").value;
+            let price = document.getElementById("pricerange").value;
+            document.getElementById("Pricerange").innerText = price;
+        }
+    </script>
+</body>
+</html>
