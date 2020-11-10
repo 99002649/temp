@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>RCB Sign Up</title>
+   <style>
+       body{
+           background-color: rgb(73, 71, 71);
+       }
+       header{
+            background-color:red;
+            text-align: center;
+            border:2px solid black ;
+            padding: 1px;
+            border-radius: 20px;
+            color:yellow;
+            margin-left: 80px;
+            margin-right: 80px;
+        }
+        #image1
+        {
+                position: absolute;
+                right:250px;
+                top:15px;
+        }
+        #image2
+        {
+                position: absolute;
+                left:200px;
+                top:17px;
+        }
+       form h1{
+           text-align: center;
+           text-decoration: underline;
+       }
+       form{
+           width: 400px;
+           padding : 15px;
+           border : 2px solid black;
+           margin: 50px auto 0;
+           border-radius: 10px;
+           background-color:lightgoldenrodyellow;
+        }
+        label{
+            display: block;
+            margin-bottom: 5px;
+            margin-top: 15px;
+            font-size: large;
+            font-weight: bold;
+        }
+        input{
+            border-radius: 5px;
+            padding: 8px;
+            border:1px solid black;
+            display: block;
+            width: 95%;
+            margin-bottom: 5px;
+            font-size: medium;
+        }
+        .error
+        {
+            font-size: 0.8em;
+            font-weight:700;
+            color:indianred;
+        }
+        
+   </style>
+      <script>
+        function ShowError(id,msg)
+        {
+           document.getElementById(id).innerText = msg;
+        }
+ 
+        function Validate()
+        {
+            let name1 = document.regForm.name.value;
+            let email1 = document.regForm.email.value;
+            let phone1 = document.regForm.phone.value;
+            let password1 = document.regForm.password.value;
+            let conformpassword1 = document.regForm.conformpassword.value;
+            
+            
+            if(name1=="" || name1== null)
+            {
+                ShowError("errName","Enter Your Name");
+                return false;
+            }
+            else
+            {
+                 ShowError("errName","")
+            }
+            if(email1 == "" ||email1== null)
+            {
+                ShowError("errEmail","Email ID Is Mandatory");
+                return false;
+            }
+            else
+            {
+                 ShowError("errEmail","")
+            }
+
+            let regEmail= new RegExp("^[a-zA-Z0-9]+@[a-zA-z]+.com$")
+            if(regEmail.test(email1)==false)
+            {
+                ShowError("errEmail","Email ID Is Not Valid");
+                return false;
+            }
+            else
+            {
+                 ShowError("errEmail","")
+            }
+
+            if(phone1=="" || phone1== null)
+           {
+               ShowError("errPhone","Enter Mobile Number");
+               return false;
+           }
+           else
+           {
+                ShowError("errPhone","")
+           }
+            let regPhone= new RegExp("^[6-9]{1}[0-9]{9}$")
+            if(regPhone.test(phone1)==false)
+            {
+                ShowError("errPhone","Mobile Number Is Not Valid");
+                return false;
+            }
+            else
+            {
+                 ShowError("errPhone","")
+            }
+            if(password1=="" || password1== null)
+            {
+                ShowError("errPassword","Enter The Password");
+                return false
+            }
+            else
+            {
+                 ShowError("errPassword","")
+            }
+            if(conformpassword1 != password1)
+            {
+                ShowError("errConformpassword","Password Is Not Matching");
+                return false;
+            }
+            else
+            {
+                 ShowError("errConformpassword","")
+            }
+            alert("Account Created Successfully");
+            return true;
+        }
+        
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Royal Challengers Bengalore #PlayBold</h1>
+          <h2> 🏆ಈ ಸಲ ಕಪ್ ನಮ್ದೇ💪</h2>
+     
+        <img id="image1" src="../Assets/RCBLogo.png" width="120px" height="120px">
+        <img id="image2" src="../Assets/playbold.jpg" width="160px" height="120px">
+       </header>
+    
+    <form action="../Views/RCBLogin.html" name="regForm" onsubmit="return Validate()">
+        <h1>Create Your Account</h1>
+    <div>
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name">
+        <div id="errName" class="error"></div>
+    </div>
+    <div>
+        <label for="email">Email ID</label>
+        <input type="text" id="email" name="email">
+        <div id="errEmail" class="error"></div>
+    </div>
+    <div>
+        <label for="phone">Mobile Number</label>
+        <input type="text" id="phone" name="phone">
+        <div id="errPhone" class="error"></div>
+    </div>
+    <div>
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password">
+        <div id="errPassword" class="error"></div>
+    </div>
+    <div>
+        <label for="conformpassword">Conform Password</label>
+        <input type="password" id="conformpassword" name="conformpassword">
+        <div id="errConformpassword" class="error"></div>
+    </div>
+        <input type="submit" value="SIGN UP" id="button" style="width: 100pt; margin-left: 100pt; margin-top: 20px; border-radius: 10px;">
+    </form>
+</body>
+</html>
